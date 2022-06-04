@@ -1,0 +1,139 @@
+body{
+    background: url(../images/clay-leconey-D6gB8bVu4PE-unsplash.jpg) no-repeat;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.formulario_contactanos{
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    height: 60vh;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.541);
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.image_contact{
+    width: 50%;
+    display: flex;
+    overflow: hidden;
+}
+
+.image_contact img{
+    width: 100%;
+    height: 100%;
+}
+
+.line{
+    height: 2px;
+    width: 99%;
+    background-color: black;
+    margin: 10px auto;
+    align-self: center;
+}
+
+form{
+    width: 60%;
+}
+
+form h3{
+    text-align: center;
+}
+
+.datosUsuario{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+}
+
+.datos_contacto{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.datos_contacto div{
+    width: 50%;
+}
+
+.datos_contacto p{
+    font-size: 1rem;
+    margin-top: -3px;
+    width: 120%;
+}
+
+.datos_contacto input{
+    height: 30px;
+    width: 90%;
+    border-radius: 7px;
+    border: 1px solid gray;
+    align-content: center;
+}
+
+.asunto{
+    height: 15vh;
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 95%;
+    margin-top: -10px;
+}
+.asunto_contacto{
+    margin-top: -20px
+}
+
+.boton{
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 100%;
+    height: 40px;
+    background: #820053;
+    border: none;
+    color: white;
+    margin: auto auto 0 auto;
+    /* margin-bottom: 20px; */
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+@media (max-width:800px){
+    .image_contact{display: none;}
+    form{
+        width: 80%;
+        margin: auto;
+        height: 100%;
+    }
+
+    .formulario_contactanos{
+        padding-top: 0px;
+        height: 75vh;
+    }
+
+    .datos_contacto input{
+        width: 100%;
+    }
+
+    .datos_contacto{
+        flex-direction: column;
+    }
+
+    .asunto{height: 6vh; width: 98%;}
+
+    .datos_contacto div{width: 100%;}
+
+    .asunto_contacto{
+        margin-top: -20px
+    }
+}

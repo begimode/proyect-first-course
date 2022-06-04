@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+.login{display: none;}
+.admin_tables{
+    min-height: 78vh;
+    max-height: inherit;
+}
+
+p{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 3vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.line{
+    margin-top: 0px;
+}
+
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+.counter{
+  padding:8px; 
+  color:#ccc;
+}
+
+table {
+    margin-bottom: 75px;
+    border-collapse: collapse;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+tr, td {
+    text-align: center;
+}
+
+.boton{
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 40px;
+    background-color: #820053;
+    color: white;
+    text-decoration: none;
+    border:none;
+    width: 150px;
+    height: 50px;
+    align-self: right;
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    align-self: right;
+    margin: 10px 20px;
+}
+
+.botones_admin{
+  align-self: center;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+#popUpOverlay{
+  height: 110%;
+  width: 100vw;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0.4;
+  display: none;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.nuevo_usu p{
+  font-size:1rem;
+  padding-top: 10px;
+}
+
+.actualizar{
+  height: 100%;
+  background-color: #820053;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: visible;
+  width: 180vw;
+  background-color: rgb(99, 74, 74);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+#popUpBox{
+  width: 70vw;
+  max-width: 500px;
+  /* overflow: hidden; */
+  background-color:rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.521);
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  padding: 10px;
+  text-align: center;
+  display: none;
+}
+
+.cruz{
+  display: flex;
+  justify-content: right;
+}
+
+.cruz svg{
+  color: red;
+  cursor: pointer;
+}
+
+.modify{
+  display: flex;
+  flex-direction: row;
+}
+
+.line_vertical{
+  width: 4px;
+  height: 90%;
+  background-color: black;
+}
+
+@media (max-width:800px){
+  .table_parcelas{
+    display: none;
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/contacto.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <script src="../js/header.js"></script>
+    <title>Formulario de contacto</title>
+</head>
+<body>
+      <!-- HEADER -->
+    <section class="cabecera">
+      <header class="encabezado" role="banner">
+          <a class="logo" href="../../indice.html">
+              <img src="../images/logo.png" alt="logo de la empresa" >
+          </a>
+          <div class="menuHeader">
+              <a class="login" href="../html/login.html" >
+                  <img src="../images/icono_login.png" alt="logo registrarse" href="../html/login.html">
+              </a>
+              <button class="menu" id="menuHamburger" type="button" onclick="menuAbrirCerrar()">
+                  <span class="line"></span>
+                  <span class="line"></span>
+                  <span class="line"></span>
+              </button>
+          </div>
+      </header>
+
+      <div class="menuDesplegable" id="menuDesplegable">
+          <a href="../html/indice.html">Inicio</a>
+          <a href="../html/indice.html">Productos</a>
+          <a href="../html/indice.html">Consultas</a>
+          <a href="../html/indice.html">Nosotros</a>
+      </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="formulario_contactanos">
+    <div class="image_contact">
+      <img src="../images/foto_contact_us.png" alt="">
+    </div>
+    <form action="../php/send_email.php" method="post">
+      <h3>Formulario de contacto</h3>
+      <div class="line"></div>
+      <div class="datosUsuario">
+        <div class="datos_contacto">
+          <div>
+                      <p>Nombre:<br></p>
+          <input class="usuario" type="text" name="nombre" placeholder="Ingrese su nombre" required><br><br>
+          
+          </div>
+          <div><p>Apellidos:<br></p>
+          <input class="apellido" type="text" name="apellidos" placeholder="Ingrese sus apellidos" required><br><br></div>
+        </div>
+        <div class="datos_contacto">
+          <div>          <p>Email:<br></p>
+          <input class="email" type="text" name="email" placeholder="Ingrese su email" required><br><br></div>
+          <div>
+          <p>Número de teléfono:<br></p>
+          <input class="movil" type="text" name="movil" placeholder="Número de teléfono" required><br><br></div>
+
+        </div>
+        <div class="asunto_contacto">          <p>Asunto:<br></p>
+          <textarea class="asunto" type="text" name="mensaje" placeholder="Escriba detalladamente el motivo de su consulta" required></textarea>
+
+      </div>
+      <input class="boton" id="boton" type="submit" name="submit" value="Enviar"></div>
+  </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a class="flecha_arriba" href="../html/indice.html">
+        <img id="flecha_arriba" src="../images/flecha_arriba.png" alt="flecha">
+    </a>
+    <a class="gti" href="../html/indice.html">
+        <img id="logo" src="../images/logo.png" alt="GTI" style="float: left">
+    </a>      
+</footer>
+</body>
+</html>
