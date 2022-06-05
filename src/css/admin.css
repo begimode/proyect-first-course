@@ -129,6 +129,11 @@ tr, td {
   display: none;
 }
 
+
+button a{color: white; text-decoration: none;}
+button a:hover{color: white; text-decoration: none;}
+
+
 .cruz{
   display: flex;
   justify-content: right;

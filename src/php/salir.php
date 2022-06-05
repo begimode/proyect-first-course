@@ -1,4 +1,4 @@
 <?php
 session_unset(); 
-header("location: ../html/indice.html"); 
+header("location: ../index.html"); 
 ?>

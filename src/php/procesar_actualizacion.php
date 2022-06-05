@@ -1,10 +1,6 @@
 <?php 
 
-session_start();
-$hostdb="localhost";
-$userdb = "root";
-$passworddb = "";
-$db = "mapas";
+require './conexion.php';
 
 $newUser = $_POST["new_usuario"];
 $newEmail = $_POST["new_email"];

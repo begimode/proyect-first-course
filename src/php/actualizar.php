@@ -1,6 +1,6 @@
 <?php
 session_start();
-    
+require './conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -101,15 +101,10 @@ session_start();
             <tbody>
                 
                 <?php
-                    $hostdb="localhost";
-                    $userdb = "root";
-                    $passworddb = "";
-                    $db = "mapas";
+
                     $contador[2]=0;
                     $contadorUsu1 = 0;
                     $contadorUsu2 = 0;
-
-                    $data=mysqli_connect($hostdb,$userdb,$passworddb,$db) or die("Error de conexion");
 
                     if($_SERVER["REQUEST_METHOD"]=="GET")
                     {

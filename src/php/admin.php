@@ -1,14 +1,19 @@
 <?php
+$sessionTime = 365 * 24 * 60 * 60; // 1 año de duración
+session_set_cookie_params($sessionTime);
 session_start();
 
-//   if (($_SESSION['authenticatedA'] == false)) {
-//       header("Location: ../html/indice.html");
-//   }
+require './conexion.php';
 
- $hostdb="localhost";
- $userdb = "root";
- $passworddb = "";
- $db = "mapas";
+
+function salirPhp(){
+    session_destroy(); 
+    header("Location: ../index.html");
+}
+
+if (isset($_GET['salir'])) {
+    salirPhp();
+}
 
 ?>
 
@@ -82,13 +87,10 @@ session_start();
 <body>
     <section class="cabecera">
         <header class="encabezado" role="banner">
-            <a class="logo" href="../html/indice.html">
+            <a class="logo" href="">
                 <img src="../images/logo.png" alt="logo de la empresa" >
             </a>
             <div class="menuHeader">
-                <a class="login" href="../html/login.html" >
-                    <img src="../images/icono_login.png" alt="logo registrarse" href="../html/login.html">
-                </a>
                 <button class="menu" id="menuHamburger" type="button" onclick="menuAbrirCerrar()">
                     <span class="line"></span>
                     <span class="line"></span>
@@ -98,7 +100,7 @@ session_start();
         </header>
 
         <div class="menuDesplegable" id="menuDesplegable">
-            <a href="../html/indice.html">Inicio</a>
+            <a href="../php/admin.php">Inicio</a>
             <a href="../html/indice.html">Productos</a>
             <a href="../html/indice.html">Consultas</a>
             <a href="../html/indice.html">Nosotros</a>
@@ -111,8 +113,7 @@ session_start();
 
         <div class="botones_admin">
             <button class="boton" onclick="abrirPopUp()">Añadir usuario</button>
-            <button class="boton" onclick="location.reload(); <?php  session_destroy();?> location.href='../html/indice.html'">Cerrar sesión</button>
-        </div>
+            <button class="boton" ><a href="admin.php?salir=salir">Cerrar sesión</a></button>        </div>
 
         <ul>
             <div class="form-group pull-right">
@@ -135,6 +136,7 @@ session_start();
             <tbody>
 
                 <?php
+                
                     $contador[2]=1;
                     $contador[3]=1;
                     $contadorUsu1 = 0;
@@ -239,16 +241,17 @@ session_start();
                         <input class="usuario" type="text" name="nombre" placeholder="Ingrese su nombre"><br><br>
                     </div>
                     <div>
-                        <p>ID:<br></p>
-                        <input class="id" type="text" name="id" placeholder="Ingrese su id"><br><br>
-                    </div>
-                    <div>
                         <p>Email:<br></p>
                         <input class="apellido" type="text" name="email" placeholder="Ingrese su email"><br><br>
                     </div>
                     <div>
                         <p>Rol:<br></p>
-                        <input class="apellido" type="text" name="rol" placeholder="Ingrese su rol"><br><br>
+                        <select name="rol" class="usuario">
+                            <option value="user" selected>user</option>
+                            <option value="admin">admin</option>
+                        </select>
+                        
+                        <!-- <input class="apellido" type="text" name="rol" placeholder="Ingrese su rol"><br><br> -->
                     </div>
                     <div>
                         <p>Numero/s de parcelas:<br></p>

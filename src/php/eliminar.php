@@ -1,14 +1,7 @@
 <?php 
 
-session_start();
-$hostdb="localhost";
-$userdb = "root";
-$passworddb = "";
-$db = "mapas";
+require './conexion.php';
 $idUsu = $_GET["id"];
-
-$data=mysqli_connect($hostdb,$userdb,$passworddb,$db) or die("Error de conexion");
-
 
 $sqlNew = "DELETE FROM usuarios WHERE id = '" . $idUsu . "'";
 $result=mysqli_query($data,$sqlNew);

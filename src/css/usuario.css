@@ -36,6 +36,9 @@ p{
     padding-top: 2vh;
 }
 
+a{color: white; text-decoration: none;}
+a:hover{color: white; text-decoration: none;}
+
 h6{
     font-size: 1rem;
     margin-top: .5rem;

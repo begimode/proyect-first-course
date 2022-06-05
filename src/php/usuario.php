@@ -1,12 +1,16 @@
 <?php
+$sessionTime = 365 * 24 * 60 * 60; // 1 año de duración
+session_set_cookie_params($sessionTime);
 session_start();
-if (($_SESSION['authenticatedU'] == false)) {
-header("Location: ../html/indice.html");
+
+
+function salirPhp(){
+    session_destroy(); 
+    header("Location: ../index.html");
 }
 
-function salir(){
-   session_destroy(); 
-   header("Location: ../html/indice.html");
+if (isset($_GET['salir'])) {
+    salirPhp();
 }
 ?>
 
@@ -31,13 +35,10 @@ function salir(){
 
     <section class="cabecera">
         <header class="encabezado" role="banner">
-            <a class="logo" href="../html/indice.html">
+            <a class="logo" href="">
                 <img src="../images/logo.png" alt="logo de la empresa" >
             </a>
             <div class="menuHeader">
-                <a class="login" href="../html/login.html" >
-                    <img src="../images/icono_login.png" alt="logo registrarse" href="../html/login.html">
-                </a>
                 <button class="menu" id="menuHamburger" type="button" onclick="menuAbrirCerrar()">
                     <span class="line"></span>
                     <span class="line"></span>
@@ -47,14 +48,14 @@ function salir(){
         </header>
 
         <div class="menuDesplegable" id="menuDesplegable">
-            <a href="../html/indice.html">Inicio</a>
+            <a href="../php/usuario.php">Inicio</a>
             <a href="../html/indice.html">Productos</a>
             <a href="../html/indice.html">Consultas</a>
             <a href="../html/indice.html">Nosotros</a>
         </div>
     </section>
 
-    <button class="boton" onclick="location.reload(); <?php  session_destroy();?>">Cerrar sesión</button>
+    <button class="boton" ><a href="usuario.php?salir=salir">Cerrar sesión</a></button>
 
     <section class="data_user">
         <h3>Hola, <span id=""><?php echo $_GET["username"]; ?></span></h3>
@@ -110,12 +111,9 @@ function salir(){
 
     <script>
         function salir(){
-            <?php 
-               session_destroy(); 
-               header("Location: ../html/indice.html");
-            ?>
-            console.log("salir")
-            location.reload();
+            var result ="<?php salirPhp(); ?>"
+            document.write(result);
+            // location.reload();
         }
     </script>
     <script>

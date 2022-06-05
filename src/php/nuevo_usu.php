@@ -1,30 +1,20 @@
 <?php 
 
-$hostdb="localhost";
-$userdb = "root";
-$passworddb = "";
-$db = "mapas";
-
-              $data=mysqli_connect($hostdb,$userdb,$passworddb,$db) or die("Error de conexion");
+require './conexion.php';
+require './tamanyo.php';
 
             //   if($_SERVER["REQUEST_METHOD"]=="POST")
             //   {
                   
                   $username_new=$_POST["nombre"];
-                  $id_new = $_POST["id"];
+              
                   $email_new=$_POST["email"];
-                  $rol_new=$_POST["rol"];
+                  $rol_new = filter_input(INPUT_POST, 'rol', FILTER_SANITIZE_STRING);
                   $parcelas_new=$_POST["parcelas"];
 
-                  echo "<script>conole.log('Despues de definir variables')</script>";
-                  $sql = "INSERT INTO `usuarios`(`id` ,`nombre`, `password`, `email`, `rol`) VALUES ('" . $id_new . "',' " . $username_new . "', '1234','" . $email_new . "','" . $rol_new . "')";
 
-                  echo "<script>conole.log('Despues de la consulta a bd')</script>";
-
+                  $sql = "INSERT INTO `usuarios`(`nombre`, `password`, `email`, `rol`) VALUES ('" . $username_new . "', '1234','" . $email_new . "','" . $rol_new . "')";
                   $result=mysqli_query($data,$sql);
-
-                  echo "<script>conole.log('Despues de eviar la consulta')</script>";
-
 
                   if(!$result){
                       echo "ERROR";

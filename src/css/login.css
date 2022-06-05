@@ -11,6 +11,11 @@
     margin: 0;
 }
 
+.datos_incorrectos{
+    color: red;
+    display: none;
+}
+
 .cajafuera{
     height: 70vh;
     margin: 0 auto;
