@@ -71,6 +71,14 @@ ul li{
     display: none;
 }
 
+.chart-container {
+    position: relative;
+    width: 80vw;
+    height: 50vh;
+    border: solid 1px black;
+    margin: 0 auto;
+}
+
 .boton{
     font-family: 'Source Sans Pro', sans-serif;
     border-radius: 40px;

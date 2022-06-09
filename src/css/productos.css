@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-
 body{
-    height: 100vh;
     background: url(../images/clay-leconey-D6gB8bVu4PE-unsplash.jpg) no-repeat;
     font-family: 'Source Sans Pro', sans-serif;
     background-size: cover;
@@ -11,20 +8,47 @@ body{
     flex-direction: column;
 }
 
-.section_productos{
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    padding: 5rem 1rem;
-}
-
-.nosotros_text{
+h2{
     align-self: center;
     font-size: 2rem;
+}
+
+.productos{
+    margin: 2rem 2rem;
+    background-color: #fff;
+    border-radius: 30px;
+    border: 1px black solid;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sensor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sensor *{
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 3rem;
+}
+
+h3{
+    font-size: 1.6rem;
+    margin-bottom: -15px;
 }
 
 p{
     font-weight: 600;
     font-size: 1.1rem;
     text-align: justify;
+}
+
+.sensor img{
+    height: 200px;
+    width: 200px;
+    align-self: center;
 }

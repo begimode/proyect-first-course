@@ -3,7 +3,7 @@
 $serverNombre = "localhost";
 $userNombre = "root";
 $password = "";
-$dbNombre = "mapas";
+$dbNombre = "gti-proyecto-primero";
 
 // Crear la conexión
 $conn = mysqli_connect($serverNombre, $userNombre, $password, $dbNombre);

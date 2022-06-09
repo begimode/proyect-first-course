@@ -32,6 +32,10 @@ if (isset($_GET['salir'])) {
 <body>
     <script src="../js/header.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?&callback=initMap" async defer></script>
+    	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.1.0/dist/chartjs-adapter-luxon.min.js"></script>
 
     <section class="cabecera">
         <header class="encabezado" role="banner">
@@ -68,7 +72,10 @@ if (isset($_GET['salir'])) {
             Elige la parcela para ver las graficas
         </div>
 
-        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="chart-container">
+	        <canvas id="chart"></canvas>
+        </div>
+        <!-- <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="../images/luminosidad_grafica.png" class="d-block w-100" alt="...">
@@ -91,7 +98,7 @@ if (isset($_GET['salir'])) {
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden"></span>
             </button>
-          </div>
+          </div> -->
     </section>
 
        
@@ -263,7 +270,7 @@ if (isset($_GET['salir'])) {
         }
 
     </script>
-    
+    <script src="../js/grafica-base.js"></script>
 
 </body>
 </html>

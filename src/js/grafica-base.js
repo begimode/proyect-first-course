@@ -48,6 +48,29 @@ let datos = {
     ]
 };
 
+let opciones = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            position: 'bottom',
+            align: 'center'
+        },
+        title: {
+            display: true,
+            text: 'Ventas de la semana'
+        },
+        tooltip: {
+            backgroundColor: '#fff',
+            titleColor: '#000',
+            titleAlign: 'center',
+            bodyColor: '#333',
+            borderColor: '#666',
+            borderWidth: 1,
+        }
+    },
+};
+
 let ctx = document.getElementById('chart');
 
 let miGrafica = new Chart(ctx, {

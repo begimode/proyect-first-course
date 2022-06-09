@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/nosotros.css">
+    <title>Productos</title>
+    <script src="../js/header.js"></script>
 </head>
 <body>
+
+    <!-- HEADER -->
+        <section class="cabecera">
+            <header class="encabezado" role="banner">
+                <a class="logo" href="../index.html">
+                    <img src="../images/logo.png" alt="logo de la empresa" >
+                </a>
+                <div class="menuHeader">
+                    <a class="login" href="../html/login.html" >
+                        <img src="../images/icono_login.png" alt="logo registrarse" href="../html/login.html">
+                    </a>
+                    <button class="menu" id="menuHamburger" type="button" onclick="menuAbrirCerrar()">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+            </header>
+    
+            <div class="menuDesplegable" id="menuDesplegable">
+                <a href="../index.html">Inicio</a>
+                <a href="../html/productos.html">Productos</a>
+                <a href="../html/contacto.html">Consultas</a>
+                <a href="../html/nosotros.html">Nosotros</a>
+            </div>
+        </section>
+    <div class="section_productos">
+        <h3 class="nosotros_text">NOSOTROS</h3>
+        <p class="text1">GTI es una empresa emergente que se dedica a la fabricación de sondas dedicadas al cultivo, para la monitorización de diferentes parámetros. Nuestro objetivo no es otro que el de mejorar la calidad de vida, tanto personal como económicamente, del propietario de los terrenos.</p>
+        <p class="text2">A cada cliente le hacemos un presupuesto personalizado, atendiendo a sus necesidades. Nuestros técnicos acuden al terreno a valorar diferentes aspectos del mismo y a hacer una estimación del tiempo que se tardaría en instalar la sonda.</p>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a class="flecha_arriba" href="../html/indice.html">
+            <img id="flecha_arriba" src="../images/flecha_arriba.png" alt="flecha">
+        </a>
+        <a class="gti" href="../html/indice.html">
+            <img id="logo" src="../images/logo.png" alt="GTI" style="float: left">
+        </a>      
+    </footer>
     
 </body>
 </html>
