@@ -49,9 +49,9 @@ if (isset($_GET['salir'])) {
 
         <div class="menuDesplegable" id="menuDesplegable">
             <a href="../php/usuario.php">Inicio</a>
-            <a href="../html/indice.html">Productos</a>
-            <a href="../html/indice.html">Consultas</a>
-            <a href="../html/indice.html">Nosotros</a>
+            <a href="../html/productos.html">Productos</a>
+            <a href="../html/contacto.html">Consultas</a>
+            <a href="../html/nosotros.html">Nosotros</a>
         </div>
     </section>
 

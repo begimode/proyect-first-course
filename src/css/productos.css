@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+body{
+    height: 100vh;
+    background: url(../images/clay-leconey-D6gB8bVu4PE-unsplash.jpg) no-repeat;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.section_productos{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    padding: 5rem 1rem;
+}
+
+.nosotros_text{
+    align-self: center;
+    font-size: 2rem;
+}
+
+p{
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: justify;
+}

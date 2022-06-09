@@ -31,8 +31,10 @@ if (isset($_GET['salir'])) {
     </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../js/header.js"></script>
+    <script src="../js/atras.js"> </script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
+
         $(document).ready(function() {
         $(".search").keyup(function () {
             var searchTerm = $(".search").val();
@@ -101,9 +103,9 @@ if (isset($_GET['salir'])) {
 
         <div class="menuDesplegable" id="menuDesplegable">
             <a href="../php/admin.php">Inicio</a>
-            <a href="../html/indice.html">Productos</a>
-            <a href="../html/indice.html">Consultas</a>
-            <a href="../html/indice.html">Nosotros</a>
+            <a href="../html/productos.html">Productos</a>
+            <a href="../html/contacto.html">Consultas</a>
+            <a href="../html/nosotros.html">Nosotros</a>
         </div>
     </section>
 

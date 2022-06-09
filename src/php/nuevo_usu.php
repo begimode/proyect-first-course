@@ -1,7 +1,6 @@
 <?php 
 
 require './conexion.php';
-require './tamanyo.php';
 
             //   if($_SERVER["REQUEST_METHOD"]=="POST")
             //   {
