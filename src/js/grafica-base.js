@@ -3,7 +3,7 @@ let datos = {
     datasets: [
         {
             label: 'humedad',
-            data: [100, 234, 45, 210, 430, 157, 284],
+            data: [43, 49, 45, 55, 51, 58, 48, 70],
             fill: true,
             backgroundColor: 'rgba(255,69,34,.5)',
             borderColor: 'rgb(255,110,86)',
@@ -14,7 +14,7 @@ let datos = {
         },
         {
             label: 'salinidad',
-            data: [350, 34, 267, 110, 30, 20, 70],
+            data: [8, 10, 9, 7, 9, 11, 8],
             fill: true,
             backgroundColor: 'rgba(63,80,255,.2)',
             borderColor: 'rgb(119,145,255)',
@@ -25,7 +25,7 @@ let datos = {
         },
         {
             label: 'temperatura',
-            data: [30, 25, 27, 18, 22, 20, 23],
+            data: [30, 25, 27, 18, 22, 20, 23, 40],
             fill: true,
             backgroundColor: 'rgba(128,0,128,.4)',
             borderColor: 'rgb(128,0,128)',
@@ -36,10 +36,10 @@ let datos = {
         },
         {
             label: 'luminosidad',
-            data: [30, 25, 27, 18, 22, 20, 23],
+            data: [310, 330, 327, 340, 315, 370, 360, 380],
             fill: true,
-            backgroundColor: 'rgba(128,0,128,.4)',
-            borderColor: 'rgb(128,0,128)',
+            backgroundColor: 'rgba(255,255,0,.4)',
+            borderColor: 'rgb(255,255,0)',
             borderDash: [10, 4, 3, 4],
             tension: .3,
             pointStyle: 'rectRot',
@@ -51,6 +51,11 @@ let datos = {
 let opciones = {
     responsive: true,
     maintainAspectRatio: false,
+    // scales: {
+    //     y: {
+    //         stacked: true
+    //     }
+    // },
     plugins: {
         legend: {
             position: 'bottom',
