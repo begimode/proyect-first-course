@@ -1,7 +1,8 @@
 <?php
 
+// die("Texto index");
 
-require_once '../includes/PeticionREST.inc';
+require_once ('../src/api/includes/PeticionRest.inc');
 
 $peticion = new PeticionREST('v1.0');
 
