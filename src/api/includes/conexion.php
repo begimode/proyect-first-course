@@ -1,16 +1,16 @@
 <?php
 
-$serverNombre = "localhost";
-$userNombre = "root";
-$password = "";
-$dbNombre = "gti-proyecto-primero";
+$hostdb="localhost";
+$userdb = "root";
+$passworddb = "";
+$db = "gti-proyecto-primero";
 
-// Crear la conexión
-$conn = mysqli_connect($serverNombre, $userNombre, $password, $dbNombre);
+$data=mysqli_connect($hostdb,$userdb,$passworddb,$db) or die("Error de conexion");
+
 
 // Chequear la conexión
-if (!$conn) {
+if (!$data) {
     die("Error: " . mysqli_connect_error());
 }
 
-mysqli_query($conn, 'SET NAMES utf8');
+// mysqli_query($conn, 'SET NAMES utf8');

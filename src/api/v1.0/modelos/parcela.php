@@ -1,4 +1,7 @@
 <?php
+die("Texto");
+// ini_set ( 'display_errors', 1 );
+// error_reporting ( E_ALL );
 
 if(!isset($peticion)) die();
 
@@ -8,6 +11,7 @@ if($peticion->metodo() === "GET"){
     $paramGet = $peticion->parametrosQuery();
     if(isset($paramGet["usuario"])){
         $sql = "SELECT * FROM `vista_propiedad_parcelas` WHERE `usuario` = " . $paramGet["usuario"]."";
+        die($sql);
         $result = mysqli_query($conn, $sql);
         //echo $sql;
         while ($row = mysqli_fetch_assoc($result)){
