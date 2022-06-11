@@ -13,4 +13,4 @@ if (!$data) {
     die("Error: " . mysqli_connect_error());
 }
 
-// mysqli_query($conn, 'SET NAMES utf8');
+mysqli_query($data, 'SET NAMES utf8');
