@@ -45,7 +45,7 @@ if (isset($_GET['salir'])) {
             let usuario = urlParams.get("usuario");
             if(!usuario) usuario = 1;
             
-            let consulta = await fetch("../api/v1.0/parcela?usuario=1");
+            let consulta = await fetch("../api/v1.0/parcela?usuario="+usuario);
             parcelas = await consulta.json();
             console.log(parcelas);    
             crearSelector();
