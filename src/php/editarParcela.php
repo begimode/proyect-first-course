@@ -10,13 +10,15 @@ $idUsu = $_GET["id"];
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-    $sqlNew = "UPDATE vista_parcelas_con_vertices SET lat = ". floatval($newLat) .", lng = ".floatval($newLng)  ." WHERE lng= ". floatval($latOld) ." AND lat= ". floatval($lngOld) ."";
+    $sqlNew = "UPDATE `vista_parcelas_con_vertices` SET lat = '". floatval($newLat) ."', lng = '".floatval($newLng)  ."' WHERE lng= '". floatval($latOld) ."' AND lat= '". floatval($lngOld) ."'";
     $result=mysqli_query($data,$sqlNew);
 
     if(!$result){
         die("ERROR");
     }
 
+
+    echo $result;
     // if (!mysqli_query($data, $result)) {
     //     print_r(mysqli_error($data));
     // }
@@ -25,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     // mysqli_free_result($result);
     // mysqli_close($data);
-    $result->close();
+    // $result->close();
     $mysqli->close();
 }
 
