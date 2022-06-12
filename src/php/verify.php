@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     if($row["rol"]=="user"){
         // $_SESSION['authenticatedU']=true;
-        $_SESSION['usuario'] = $username;
+        $_SESSION['usuario'] = true;
         header("location: usuario.php?username=".$username."");
     }
     elseif ($row["rol"]=="admin"){

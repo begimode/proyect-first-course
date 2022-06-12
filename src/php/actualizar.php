@@ -1,6 +1,16 @@
 <?php
 session_start();
 require './conexion.php';
+
+
+function salirPhp(){
+    session_destroy(); 
+    header("Location: ../index.html");
+}
+
+if (isset($_GET['salir'])) {
+    salirPhp();
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,10 +75,10 @@ require './conexion.php';
         </header>
 
         <div class="menuDesplegable" id="menuDesplegable">
-            <a href="../html/indice.html">Inicio</a>
-            <a href="../html/indice.html">Productos</a>
-            <a href="../html/indice.html">Consultas</a>
-            <a href="../html/indice.html">Nosotros</a>
+            <a href="../index.html">Inicio</a>
+            <a href="../html/productos.html">Productos</a>
+            <a href="../html/contactos.html">Consultas</a>
+            <a href="../html/nosotros.html">Nosotros</a>
         </div>
     </section>
 
@@ -78,7 +88,8 @@ require './conexion.php';
 
         <div class="botones_admin">
             <!-- <button class="boton" onclick="abrirPopUp()">Añadir usuario</button> -->
-            <button class="boton" onclick="" type="submit">Cerrar sesión</button>
+            <button class="boton" ><a href="admin.php?salir=salir">Cerrar sesión</a></button>       
+            <button class="boton" onclick="" type="submit">Editar parcelas</button>
         </div>
 
         <ul>

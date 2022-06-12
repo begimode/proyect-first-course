@@ -10,7 +10,6 @@ if($peticion->metodo() === "GET"){
     if(isset($paramGet["usuario"])){
         $sql = "SELECT * FROM `vista_propiedad_parcelas` WHERE `usuario` = " . $paramGet["usuario"];
         $result = mysqli_query($data, $sql);
-        echo $sql;
         while ($row = mysqli_fetch_assoc($result)){
             array_push( $salida, $row);    
         }

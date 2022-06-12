@@ -63,7 +63,7 @@ let opciones = {
         },
         title: {
             display: true,
-            text: 'Ventas de la semana'
+            text: 'Mediciones'
         },
         tooltip: {
             backgroundColor: '#fff',

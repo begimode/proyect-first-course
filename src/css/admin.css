@@ -155,6 +155,12 @@ button a:hover{color: white; text-decoration: none;}
   background-color: black;
 }
 
+.botones_admin{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media (max-width:800px){
   .table_parcelas{
     display: none;

@@ -1,17 +1,18 @@
 <?php
 
-ini_set ( 'display_errors', 1 );
-error_reporting ( E_ALL );
-
 $sessionTime = 365 * 24 * 60 * 60; // 1 año de duración
 session_set_cookie_params($sessionTime);
 session_start();
 
-
-// function salirPhp(){
-//     session_destroy(); 
+// if(!isset($_SESSION['usuario']]){
 //     header("Location: ../index.html");
 // }
+
+
+function salirPhp(){
+    session_destroy(); 
+    header("Location: ../index.html");
+}
 
 if (isset($_GET['salir'])) {
     salirPhp();
@@ -35,10 +36,14 @@ if (isset($_GET['salir'])) {
 </head>
 <body>
     <script src="../js/header.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?&callback=initMap" async defer></script>
 
-    <script>
+
+    <!-- <script>
         let map;
         let parcelas;
+        var marker;
+
         async function initMap() {
 
             let urlParams = new URLSearchParams(window.location.search);
@@ -50,128 +55,106 @@ if (isset($_GET['salir'])) {
             console.log(parcelas);    
             crearSelector();
             
-            // map = new google.maps.Map(document.getElementById('mapa'), {
-            //     center: {lat: 38.9965055, lng: -0.1674364},
-            //     zoom: 15,
-            //     mapTypeId: 'hybrid',
-            //     styles: [
-            //     {
-            //     featureType: 'poi',
-            //     stylers: [{visibility: 'off'}]
-            //     },
-            //     {
-            //     featureType: 'transit',
-            //     stylers: [{visibility: 'off'}]
-            //     },
-            //     ],
-            //     mapTypeControl: false,
-            //     streetViewControl: false,
-            //     rotateControl: false,
-            // });
-            // map.setTilt(0);
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9981639, lng: -0.1720151},
-            //     label: "1",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9979802, lng: -0.1715208},
-            //     label: "2",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9965934, lng: -0.1721850},
-            //     label: "3",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9969109, lng: -0.1729598},
-            //     label: "4",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9969825, lng: -0.1779657},
-            //     label: "5",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9979107, lng: -0.1774030},
-            //     label: "6",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.998340, lng: -0.178508},
-            //     label: "7",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });
-            // var marker = new google.maps.Marker({
-            //     position: {lat: 38.9975874, lng: -0.1795887},
-            //     label: "8",
-            //     animation: google.maps.Animation.DROP,
-            //     map: map
-            // });  
+            map = new google.maps.Map(document.getElementById('mapa'), {
+                center: {lat: 38.9965055, lng: -0.1674364},
+                zoom: 15,
+                mapTypeId: 'hybrid',
+                styles: [
+                {
+                featureType: 'poi',
+                stylers: [{visibility: 'off'}]
+                },
+                {
+                featureType: 'transit',
+                stylers: [{visibility: 'off'}]
+                },
+                ],
+                mapTypeControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+            });
 
-            // --------------------------------------
-            // Para mostrar las graficas
-            // --------------------------------------
+            map.setTilt(0);
+  
+            let bounds = new google.maps.LatLngBounds();
 
-            map.setEventListener("click", abrirMapas())
+            // map.fitBounds(bounds);
+            
+
+            for(var i=0; i < parcelas.length; i++){
+                marker = new google.maps.Marker({
+                    position: {lat: parseFloat(parcelas[i].lat), lng: parseFloat(parcelas[i].lng)},
+                    label: {text:(i+1).toString(), color: "#fff"},
+                    animation: google.maps.Animation.DROP,
+                    map: map,
+                    icon: pinSymbol("#e91e63")
+                });
+            }
+          
+        }
+        
+        function pinSymbol(color) {
+            return {
+                path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z',
+                fillColor: color,
+                fillOpacity: 1,
+                strokeColor: '#ffffff',
+                strokeWeight: 1,
+                scale: 1,
+            };
         }
 
-        initMap();
-        
-        function abrirMapas(){
-            document.getElementById("carouselExampleControls").style.display = "flex"
+         function abrirMapas(){
+            document.getElementById("chart-container").style.display = "flex"
             document.getElementById("texto_parcela").style.display = "none"
-        }
-
-        
+        } 
+       
         function crearSelector() {
             let selector = document.getElementById("selector-parcelas")
-            parcelas.forEach(function (parcela, index) {
+            var aux=0;
+            for(var i=0; i<2; i++){
                 let label = document.createElement('label');
-                label.textContent = parcela.nombre_parcela;
+                label.textContent = parcelas[aux].nombre;
                 let check = document.createElement('input');
                 check.type = 'checkbox';
                 check.addEventListener('change', function() {
-                    mostrarOcultarParcela(index , check.checked);
+                    mostrarOcultarParcela(aux , check.checked);
                 })
                 label.prepend(check)
                 selector.append(label);
-            })
+                aux = 4;
+            }
+        }
+
+        async function crearPoligono(parcela) {
+            let id = parcela.id;
+            let consulta = await fetch("../api/v1.0/parcela/" + id + "/vertices");
+            let vertices = await consulta.json();
+            parcela.polygon = new google.maps.Polygon({
+                paths: vertices,
+                strokeColor: "#" + parcela.color,
+                strokeOpacity: 0.8,
+                strokeWeight: 1,
+                fillColor: "#" + parcela.color,
+                fillOpacity: 0.35,
+                map: map
+            });
         }
 
         async function mostrarOcultarParcela(index, mostrar) {
             let parcela = parcelas[index];
             if(mostrar) {
-                if(parcela.polygon) {
-                    parcela.polygon.setMap(map);
-                } else {
-                    let consulta = await fetch("../api/v1.0/parcela/" + parcela.parcela + "/vertices");
-                    let vertices = await consulta.json();
-                    parcela.polygon = new google.maps.Polygon({
-                        paths: vertices,
-                        strokeColor: "#" + parcela.color,
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: "#" + parcela.color,
-                        fillOpacity: 0.35,
-                        map: map
-                    });
-                }
+                // if(parcela.polygon) {
+                //     parcela.polygon.setMap(map);
+                // } else {
+                   var a = await crearPoligono(parcela);
+                // }
             } else {
-                if(parcela.polygon) parcela.polygon.setMap(null);
+                // if(parcela.polygon) parcela.polygon.setMap(null);
             }
-            ajustarMapa()
+            
         }
-        
+        ajustarMapa()
         function ajustarMapa() {
             let bounds = new google.maps.LatLngBounds();
             parcelas.forEach(function(parcela) {
@@ -184,9 +167,7 @@ if (isset($_GET['salir'])) {
             if(!bounds.isEmpty()) map.fitBounds(bounds);
         }
 
-    </script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?&callback=initMap" async defer></script> -->
-    	
+    </script>    	 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.1.0/dist/chartjs-adapter-luxon.min.js"></script>
@@ -220,39 +201,137 @@ if (isset($_GET['salir'])) {
         <div class="line" id="line"></div>
         <div id="mapa" onclick="abrirMapas()"></div>
         <div id="selector-parcelas"></div>
+       
+    <script>
+        let map;
+        let parcelas;
+        async function initMap() {
+
+            let urlParams = new URLSearchParams(window.location.search);
+            let usuario = urlParams.get("username");
+            let parcela = urlParams.get("parcela")
+            
+            if(usuario) {
+                obtenerParcelasUsuario(usuario);
+            } else if (parcela) {
+                obtenerParcela(parcela)
+            } else {
+                obtenerParcelasUsuario(1)
+            }
+        }
+
+        function abrirMapas(){
+            document.getElementById("chart-container").style.display = "flex"
+            document.getElementById("texto_parcela").style.display = "none"
+        } 
+            
+        function crearMapa() {
+            map = new google.maps.Map(document.getElementById('mapa'), {
+                center: {lat: 39.9965055, lng: -0.1674364},
+                zoom: 18,
+                mapTypeId: 'hybrid',
+                styles: [
+                    {
+                        featureType: 'poi',
+                        stylers: [{visibility: 'off'}]
+                    },
+                    {
+                        featureType: 'transit',
+                        stylers: [{visibility: 'off'}]
+                    }
+                ],
+                mapTypeControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                });
+        }
+        
+
+        async function obtenerParcela(parcela) {
+        crearMapa();
+        let consulta = await fetch("../api/v1.0/parcela/" + parcela);
+        parcelas = [];
+        parcelas[0] = await consulta.json();
+        await crearPoligono(parcelas[0]);
+        ajustarMapa();
+        }
+        
+        async function obtenerParcelasUsuario(usuario) {
+            let consulta = await fetch("../api/v1.0/parcela?usuario=" + usuario);
+            parcelas = await consulta.json();
+
+            crearSelector();
+
+            crearMapa();
+        }
+
+        function crearSelector() {
+            let selector = document.getElementById("selector-parcelas")
+            parcelas.forEach(function (parcela, index) {
+                let label = document.createElement('label');
+                label.textContent = parcela.nombre_parcela;
+                let check = document.createElement('input');
+                check.type = 'checkbox';
+                check.addEventListener('change', function() {
+                    mostrarOcultarParcela(index , check.checked);
+                })
+                label.prepend(check)
+                selector.append(label);
+            })
+        }
+
+        async function crearPoligono(parcela) {
+            let id = parcela.parcela || parcela.id;
+            let consulta = await fetch("../api/v1.0/parcela/" + id + "/vertices");
+            let vertices = await consulta.json();
+            parcela.polygon = new google.maps.Polygon({
+                paths: vertices,
+                strokeColor: "#" + parcela.color,
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#" + parcela.color,
+                fillOpacity: 0.35,
+                map: map
+            });
+        }
+
+        async function mostrarOcultarParcela(index, mostrar) {
+        let parcela = parcelas[index];
+        if (mostrar) {
+            if (parcela.polygon) {
+                parcela.polygon.setMap(map);
+            } else {
+                await crearPoligono(parcela);
+            }
+        } else {
+            if (parcela.polygon) parcela.polygon.setMap(null);
+        }
+        ajustarMapa();
+    }
+        
+        function ajustarMapa() {
+            let bounds = new google.maps.LatLngBounds();
+            parcelas.forEach(function(parcela) {
+                if(parcela.polygon && parcela.polygon.getMap()) {
+                    parcela.polygon.getPath().getArray().forEach(function (v) {
+                        bounds.extend(v);
+                    })
+                }
+            })
+            if(!bounds.isEmpty()) map.fitBounds(bounds);
+        }
+
+    </script>
+        <div id="selector-parcelas"></div>
         <p>Sondas instaladas:</p>
         <div class="line"></div>
         <div class="texto_pinch text-center" id="texto_parcela">
             Elige la parcela para ver las graficas
         </div>
 
-        <div class="chart-container">
+        <div class="chart-container" id="chart-container">
 	        <canvas id="chart"></canvas>
         </div>
-        <!-- <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="../images/luminosidad_grafica.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="../images/humedad_grafica.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="../images/temperatura_grafica.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="../images/salinidad_grafica.png" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden"></span>
-            </button>
-          </div> -->
     </section>
 
        
@@ -270,13 +349,6 @@ if (isset($_GET['salir'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script>
-        // function salir(){
-        //     var result ="<?php salirPhp(); ?>"
-        //     document.write(result);
-        //     // location.reload();
-        // }
-    </script>
     <script src="../js/grafica-base.js"></script>
 
 </body>
