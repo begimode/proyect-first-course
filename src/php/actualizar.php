@@ -105,9 +105,9 @@ if (isset($_GET['salir'])) {
                     <th class="col-md-4 col-xs-4">Email</th>
                     <th class="col-md-3 col-xs-3">Modificar</th>
                 </tr>
-                <tr class="warning no-result">
+                <!-- <tr class="warning no-result">
                     <td colspan="4"><i class="fa fa-warning"></i> No hay resultados</td>
-                </tr>
+                </tr> -->
             </thead>
             <tbody>
                 
@@ -135,10 +135,6 @@ if (isset($_GET['salir'])) {
                     $contador[0] = $contadorUsu1;
                     $contador[1] = $contadorUsu2;
                     mysqli_close($data);
-
-
-
-                    $data=mysqli_connect($hostdb,$userdb,$passworddb,$db) or die("Error de conexion");
 
                     if($_SERVER["REQUEST_METHOD"]=="GET")
                     {
@@ -189,6 +185,41 @@ if (isset($_GET['salir'])) {
             </table>
         </ul>
     </section>
+svfv
+
+    <section class="pop_up_editar">
+        dgr
+        <div class="contenedor_pop_up">
+            <p class="edit_parce"></p>
+            <div class="parcela">
+                <h3 class="nombre_parcela">Nombre</h3>
+                <?php 
+                if($_SERVER["REQUEST_METHOD"]=="GET")
+                {
+                    // $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP WHERE UP.parcela = VPV.id AND UP.usuario = '".$_GET["id"]."'";
+
+                    $sql = "SELECT * FROM vista_parcelas_con_vertices";
+                    $result=mysqli_query($data,$sql);
+                
+                    $aux=0;                 
+                    while($row=mysqli_fetch_array($result)){
+                        // array_push($salida, $row);
+                        ?>
+
+                            <form action="" method="post">
+                                <ul>
+                                    <input class="usuario" type="text" name="lat" value="<?php echo $row["lat"]; ?>"><br><br>
+                                    <input class="usuario" type="text" name="lng" value="<?php echo $row["lng"]; ?>"><br><br>
+                                </ul>
+                            </form>
+                                
+                            <?php     
+                    }
+                }  
+                ?>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <a class="flecha_arriba" href="../html/indice.html">
@@ -198,122 +229,5 @@ if (isset($_GET['salir'])) {
             <img id="logo" src="../images/logo.png" alt="GTI" style="float: left">
         </a>      
     </footer>
-
-    <div id="popUpOverlay"></div>
-    <div id="popUpBox">
-        <div class="cruz">
-            <svg onclick="cerrar()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-            </svg>
-        </div>
-        <div id="box">
-          <i class="fas fa-check-circle fa-5x"></i>        
-              <form action="<?php 
-
-              $data=mysqli_connect($hostdb,$userdb,$passworddb,$db) or die("Error de conexion");
-
-            //   $username_new=$_POST["nombre"];
-            //       $id_new = $_POST["id"];
-            //       $email_new=$_POST["email"];
-            //       $rol_new=$_POST["rol"];
-            //       $parcelas_new=$_POST["parcelas"];
-
-            //       $sql = "INSERT INTO `usuarios`(`id` ,`nombre`, `password`, `email`, `rol`) VALUES ('" . $id_new . "',' " . $username_new . "', '1234','" . $email_new . "','" . $rol_new . "')";
-
-            //       $result=mysqli_query($data,$sql);
-
-                //   if(!$result){
-                //       echo "ERROR";
-                //       die("Error de conexion");
-                // }
-
-                // mysqli_close($data);
-
-                // header("location:admin.php?usuario=".$username_new."");
-
-              if($_SERVER["REQUEST_METHOD"]=="POST")
-              {
-                  
-                  $username_new=$_POST["nombre"];
-                  $id_new = $_POST["id"];
-                  $email_new=$_POST["email"];
-                  $rol_new=$_POST["rol"];
-                  $parcelas_new=$_POST["parcelas"];
-
-                  $sql = "INSERT INTO `usuarios`(`id` ,`nombre`, `password`, `email`, `rol`) VALUES ('" . $id_new . "',' " . $username_new . "', '1234','" . $email_new . "','" . $rol_new . "')";
-
-                  $result=mysqli_query($data,$sql);
-
-                  if(!$result){
-                      echo "ERROR";
-                      die("Error de conexion");
-                  }
-
-              }
-                mysqli_close($data);
-
-                header("location:admin.php");
-              ?>
-
-              " class="form_nuevo_usu" method="post">
-                <div class="nuevo_usu">
-                    <div>
-                        <p>Usuario:<br></p>
-                        <input class="usuario" type="text" name="nombre" placeholder="Ingrese su nombre"><br><br>
-                    </div>
-                    <div>
-                        <p>ID:<br></p>
-                        <!-- Elegir user/admin -->
-                        <input class="id" type="text" name="id" placeholder="Ingrese su id"><br><br>
-                    </div>
-                    <div>
-                        <p>Email:<br></p>
-                        <input class="apellido" type="text" name="email" placeholder="Ingrese su email"><br><br>
-                    </div>
-                    <div>
-                        <p>Rol:<br></p>
-                        <!-- Elegir user/admin -->
-                        <input class="apellido" type="text" name="rol" placeholder="Ingrese su rol"><br><br>
-                    </div>
-                    <div>
-                        <p>Numero/s de parcelas:<br></p>
-                        <input class="apellido" type="text" name="parcelas" placeholder="Ej: 2,3,4 "><br><br>
-                    </div>
-                    
-              </form>
-          <div id="closeModal">
-            <button class="boton" onclick="" type="submit">OK</button>
-          </div>
-        </div>
-    </div>
-
-    <!-- BUSCADOR -->
-    <script>
-        $(document).ready(function(){
-            $("#search").keyup(function(){
-            _this = this;
-            $.each($("#mytable tbody tr"), function() {
-                if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
-                    $(this).hide();
-                else
-                    $(this).show();
-                });
-            });
-        });
-
-        function abrirPopUp(){
-            let popUpBox = document.getElementById('popUpBox');
-            document.getElementById("popUpOverlay").style.display="flex"
-            popUpBox.style.display = "block";
-            //Close Modal
-            // document.getElementById('closeModal').innerHTML = '<button onclick="ok()" class="boton">OK</button>';
-        }
-
-        function cerrar(){
-            document.getElementById('popUpBox').style.display = "none";
-            document.getElementById('popUpOverlay').style.display = "none";
-        }
-
-    </script>
     </body>
 </html>
