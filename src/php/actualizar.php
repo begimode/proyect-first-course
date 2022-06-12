@@ -55,7 +55,21 @@ if (isset($_GET['salir'])) {
             else {$('.no-result').hide();}
                 });
         });
-    </script>
+
+        function abrirPopUp(){
+            let popUpBox = document.getElementById('popUpOverlay');
+            document.getElementById("popUpBox").style.display="flex"
+            popUpBox.style.display = "block";
+            //Close Modal
+            // document.getElementById('closeModal').innerHTML = '<button onclick="ok()" class="boton">OK</button>';
+        }
+
+        function cerrar(){
+            document.getElementById('popUpOverlay').style.display = "none";
+            document.getElementById('popUpBox').style.display = "none";
+        } 
+        
+        </script>
 <body>
     <section class="cabecera">
         <header class="encabezado" role="banner">
@@ -89,7 +103,7 @@ if (isset($_GET['salir'])) {
         <div class="botones_admin">
             <!-- <button class="boton" onclick="abrirPopUp()">Añadir usuario</button> -->
             <button class="boton" ><a href="admin.php?salir=salir">Cerrar sesión</a></button>       
-            <button class="boton" onclick="" type="submit">Editar parcelas</button>
+            <button class="boton" onclick="abrirPopUp()">Editar parcelas</button>
         </div>
 
         <ul>
@@ -183,18 +197,17 @@ if (isset($_GET['salir'])) {
             </table>
         </ul>
     </section>
-svfv
 
-    <section class="pop_up_editar">
-        dgr
-        <div class="contenedor_pop_up">
-            <p class="edit_parce"></p>
+
+    <div id="popUpOverlay"></div>
+    <div id="popUpBox">
+    <p class="edit_parce">Editar las parcelas del usuarios</p>
+    <div class="line"></div>
             <div class="parcela">
-                <h3 class="nombre_parcela">Nombre</h3>
                 <?php 
                 if($_SERVER["REQUEST_METHOD"]=="GET")
                 {
-                     $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP WHERE UP.parcela = VPV.id AND UP.usuario = '".$_GET["id"]."'";
+                     $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre, V.id FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP, vertices V WHERE UP.parcela = VPV.id AND V.lat = VPV.lat  AND UP.usuario = '".$_GET["id"]."'";
                    // $sql = "SELECT * FROM vista_parcelas_con_vertices";
                     $result=mysqli_query($data,$sql);
 
@@ -203,10 +216,16 @@ svfv
                     while($row=mysqli_fetch_array($result)){
                         ?>
 
-                            <form action="" method="post">
-                                <ul>
-                                    <input class="usuario" type="text" name="lat" value="<?php echo $row["lat"]; ?>"><br><br>
-                                    <input class="usuario" type="text" name="lng" value="<?php echo $row["lng"]; ?>"><br><br>
+                        <h6 class="nombre_parcela"><?php echo $row['nombre'] ?></h6>
+
+                            <form action="editarParcela.php?lat=<?php echo $row["lat"]?>&lng=<?php echo $row["lng"];?>&id=<?php echo $_GET["id"];?>" method="POST" accept-charset='UTF-8'>
+                                <ul class="puntos">
+                                  <span>lat</span><input class="usuario" type="text" name="latNew" value="<?php echo $row["lat"]; ?>"><br>
+                                  <span>lng</span><input class="usuario" type="text" name="lngNew" value="<?php echo $row["lng"]; ?>"><br>
+                                  <button type="submit" class="boton_edit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                                    </svg></button> 
                                 </ul>
                             </form>
                                 
@@ -214,9 +233,12 @@ svfv
                     }
                 }  
                 ?>
+
+                <!-- <button class="boton" type="">Guardar</button> -->
+                <button class="boton" onclick="cerrar()">Cerrar</button>
+
             </div>
-        </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <a class="flecha_arriba" href="../html/indice.html">
