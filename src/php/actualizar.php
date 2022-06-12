@@ -134,7 +134,6 @@ if (isset($_GET['salir'])) {
                     }
                     $contador[0] = $contadorUsu1;
                     $contador[1] = $contadorUsu2;
-                    mysqli_close($data);
 
                     if($_SERVER["REQUEST_METHOD"]=="GET")
                     {
@@ -170,7 +169,6 @@ if (isset($_GET['salir'])) {
                             }
                         }
                     }
-                    mysqli_close($data);
                     echo "<script> 
                     var fila = document.getElementById('fila_tabla')
 
@@ -196,14 +194,13 @@ svfv
                 <?php 
                 if($_SERVER["REQUEST_METHOD"]=="GET")
                 {
-                    // $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP WHERE UP.parcela = VPV.id AND UP.usuario = '".$_GET["id"]."'";
-
-                    $sql = "SELECT * FROM vista_parcelas_con_vertices";
+                     $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP WHERE UP.parcela = VPV.id AND UP.usuario = '".$_GET["id"]."'";
+                   // $sql = "SELECT * FROM vista_parcelas_con_vertices";
                     $result=mysqli_query($data,$sql);
+
                 
                     $aux=0;                 
                     while($row=mysqli_fetch_array($result)){
-                        // array_push($salida, $row);
                         ?>
 
                             <form action="" method="post">
