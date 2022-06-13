@@ -83,6 +83,10 @@ tr, td {
   cursor: pointer;
 }
 
+.parcela{
+  zoom: 0.8;
+}
+
 .nuevo_usu p{
   font-size:1rem;
   padding-top: 10px;
@@ -124,7 +128,7 @@ tr, td {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   display: none;
   flex-direction: column;
@@ -164,6 +168,7 @@ button a:hover{color: white; text-decoration: none;}
 
 .edit_parce, .parcela{
   text-align: center;
+  font-size: 17px;
 }
 
 .puntos{

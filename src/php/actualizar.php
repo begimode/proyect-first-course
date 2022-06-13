@@ -207,11 +207,9 @@ if (isset($_GET['salir'])) {
                 <?php 
                 if($_SERVER["REQUEST_METHOD"]=="GET")
                 {
-                     $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre, V.id FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP, vertices V WHERE UP.parcela = VPV.id AND V.lat = VPV.lat  AND UP.usuario = '".$_GET["id"]."'";
-                   // $sql = "SELECT * FROM vista_parcelas_con_vertices";
+                     $sql = "SELECT VPV.lat, VPV.lng, VPV.nombre, V.id FROM vista_parcelas_con_vertices VPV, usuarios_parcelas UP, vertices V WHERE UP.parcela = VPV.id AND V.lat = VPV.lat AND UP.usuario = '".$_GET["id"]."'";
                     $result=mysqli_query($data,$sql);
 
-                
                     $aux=0;                 
                     while($row=mysqli_fetch_array($result)){
                         ?>
@@ -222,7 +220,8 @@ if (isset($_GET['salir'])) {
                                 <ul class="puntos">
                                   <span>lat</span><input class="usuario" type="text" name="latNew" value="<?php echo $row["lat"]; ?>"><br>
                                   <span>lng</span><input class="usuario" type="text" name="lngNew" value="<?php echo $row["lng"]; ?>"><br>
-                                  <button type="submit" class="boton_edit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                  <button type="submit" class="boton_edit">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
                                     <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
                                     <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
                                     </svg></button> 
@@ -233,8 +232,6 @@ if (isset($_GET['salir'])) {
                     }
                 }  
                 ?>
-
-                <!-- <button class="boton" type="">Guardar</button> -->
                 <button class="boton" onclick="cerrar()">Cerrar</button>
 
             </div>
