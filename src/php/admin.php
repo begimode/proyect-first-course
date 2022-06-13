@@ -255,10 +255,6 @@ if (isset($_GET['salir'])) {
                         
                         <!-- <input class="apellido" type="text" name="rol" placeholder="Ingrese su rol"><br><br> -->
                     </div>
-                    <div>
-                        <p>Numero/s de parcelas:<br></p>
-                        <input class="apellido" type="text" name="parcelas" placeholder="Ej: 2,3,4 "><br><br>
-                    </div>
                     <button class="boton" type="submit">OK</button>
               </form>
           <div id="closeModal">

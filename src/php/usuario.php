@@ -209,7 +209,7 @@ if (isset($_GET['salir'])) {
 
             let urlParams = new URLSearchParams(window.location.search);
             let usuario = urlParams.get("username");
-            let parcela = urlParams.get("parcela")
+            let parcela = urlParams.get("parcela");
             
             if(usuario) {
                 obtenerParcelasUsuario(usuario);
@@ -257,11 +257,9 @@ if (isset($_GET['salir'])) {
         }
         
         async function obtenerParcelasUsuario(usuario) {
-            let consulta = await fetch("../api/v1.0/parcela?usuario=" + usuario);
+            let consulta = await fetch("../api/v1.0/parcela?usuario="+usuario);
             parcelas = await consulta.json();
-
             crearSelector();
-
             crearMapa();
         }
 

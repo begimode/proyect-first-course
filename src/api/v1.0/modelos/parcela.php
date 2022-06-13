@@ -8,7 +8,7 @@ require "../includes/conexion.php";
 if($peticion->metodo() === "GET"){
     $paramGet = $peticion->parametrosQuery();
     if(isset($paramGet["usuario"])){
-        $sql = "SELECT * FROM `vista_propiedad_parcelas` WHERE `usuario` = " . $paramGet["usuario"];
+        $sql = "SELECT * FROM `vista_propiedad_parcelas` WHERE `nombre_usuario` = '" . $paramGet["usuario"]."';";
         $result = mysqli_query($data, $sql);
         while ($row = mysqli_fetch_assoc($result)){
             array_push( $salida, $row);    
