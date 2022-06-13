@@ -8,8 +8,55 @@
     <link rel="stylesheet" href="./css/header_footer.css">
     <title>GTI</title>
     <script src="./js/header.js"></script>
+    <!-- <script src="./js/calculadora.js"></script> -->
 </head>
 <body>
+
+    <script>
+        function calcular(){
+            var precioMinimo = 50;
+
+            var selectKms = document.getElementById('kms');
+            var selectH = document.getElementById('hecta');
+            var selectS = document.getElementById('sensors');
+
+
+            if(selectKms.value == "0_10k"){
+                precioMinimo = precioMinimo + 30;
+            } else if(selectKms.value == "10_50k"){
+                precioMinimo = precioMinimo + 60;
+            } else if (selectKms.value == "50_100k"){
+                precioMinimo = precioMinimo + 90;
+            } else if(selectKms.value == "100_200k"){
+                precioMinimo = precioMinimo + 120;
+            } else if(selectKms.value == "m200k"){
+                precioMinimo = precioMinimo + 150;
+            }
+
+            if(selectH.value == "0_10h"){
+                precioMinimo = precioMinimo + 50;
+            } else if(selectH.value == "10_25h"){
+                precioMinimo = precioMinimo + 100;
+            } else if (selectH.value == "25_40h"){
+                precioMinimo = precioMinimo + 150;
+            } else if(selectH.value == "m40h"){
+                precioMinimo = precioMinimo + 200;
+            } 
+
+            if(selectS.value == "unos"){
+                precioMinimo = precioMinimo + 30;
+            } else if(selectS.value == "doss"){
+                precioMinimo = precioMinimo + 60;
+            } else if (selectS.value == "tress"){
+                precioMinimo = precioMinimo + 90;
+            } else if(selectS.value == "cuatros"){
+                precioMinimo = precioMinimo + 120;
+            } 
+
+            document.getElementById("precio").style.display = "flex"
+            document.getElementById("precio").innerHTML = precioMinimo + "€"
+        }
+    </script>
     
     <!-- HEADER -->
     <section class="cabecera">
@@ -122,6 +169,50 @@
             <a class="boton" type="button" name="button" href="./html/contacto.html">CONTÁCTANOS</a>
         </div>
 
+    </section>
+
+
+    <section class="calculadora">
+        <h2>Calcula tu presupuesto</h2>
+        <h5>*Los trámites son 50€</h5>
+        <div class="line"></div>
+        <div class="form">
+        <!-- <form action="" method=""> -->
+            <div class="pregunta">
+                <p>Cuantos kilomentros son de la empresa(Carrer del Paranimf, 1, 46730 Gandia, Valencia) hasta su campo?</p>
+                <select name="kms" class="select" id="kms">
+                    <option value="0_10k" selected>0-10km</option>
+                    <option value="10_50k">10-50km</option>
+                    <option value="50_100k">50-100km</option>
+                    <option value="100_200k">100-200km</option>
+                    <option value="m200k">>200km</option>
+                </select>
+            </div>
+
+            <div class="pregunta">
+                <p>Número de hectáreas que tiene su campo?</p>
+                <select name="hecta" class="select" id="hecta">
+                    <option value="0_10h" selected>0-10</option>
+                    <option value="10_25h">10-25</option>
+                    <option value="25_40h">25-40</option>
+                    <option value="m40h">>40</option>
+                </select>
+            </div>
+
+            <div class="pregunta">
+                <p>Número de sensores que quiere instalar en cada sonda?</p>
+                <select name="sensors" class="select" id="sensors">
+                    <option value="unos" selected>1</option>
+                    <option value="doss">2</option>
+                    <option value="tress">3</option>
+                    <option value="cuatros">4</option>
+                </select>
+            </div>
+            <button class="boton" id="botonCalculo" onclick="calcular()">CALCULAR</button>
+            <p class="precio" id="precio"></p>
+            <h4>*Esto es un precio orientativo. Para saber el presupuesto real contacta con nosotros.</h4>
+        <!-- </form> -->
+    </div>
     </section>
     <!-- Fin de la sección conócenos -->
 <!-- FOOTER -->

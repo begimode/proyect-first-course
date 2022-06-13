@@ -201,7 +201,7 @@ if (isset($_GET['salir'])) {
 
     <div id="popUpOverlay"></div>
     <div id="popUpBox">
-    <p class="edit_parce">Editar las parcelas del usuarios</p>
+    <p class="edit_parce">Editar las parcelas del usuario</p>
     <div class="line"></div>
             <div class="parcela">
                 <?php 

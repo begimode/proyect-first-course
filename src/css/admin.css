@@ -84,7 +84,7 @@ tr, td {
 }
 
 .parcela{
-  zoom: 0.8;
+  /* zoom: 0.8; */
 }
 
 .nuevo_usu p{
@@ -199,5 +199,8 @@ svg{
 @media (max-width:800px){
   .table_parcelas{
     display: none;
+  }
+  .parcela{
+    zoom: 0.8;
   }
 }

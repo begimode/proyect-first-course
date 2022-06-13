@@ -207,6 +207,72 @@ body{
     width: 150px;
 }
 
+/* ----------------------------------------------------- */
+/* Calculadora */
+/* ----------------------------------------------------- */
+
+.calculadora{
+    background-color: thistle;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.calculadora h2, .calculadora h5{
+    text-align: center;
+}
+
+.calculadora h5{
+    margin-top: -15px;
+}
+
+.calculadora .form{
+    padding: 2rem 2rem;
+    background-color: #dcdcdc73;
+    margin: 1rem 2rem;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.377);
+    max-width: 700px;
+    align-self: center;
+}
+
+.boton{
+    margin-top: 2rem;
+}
+
+#botonCalculo{
+    zoom: 0.8;
+}
+
+.pregunta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pregunta select{
+    width: 20vw;
+    align-self: center;
+    height: 30px;
+}
+
+.precio{
+    font-size: 1.8rem;
+    justify-content: center;
+    display: none;
+    background-color: #d3f798b6;
+    padding: 1rem 0;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.274);
+}
+
 @media (max-width:700px){
 
     .titulo{padding: 0;}
@@ -224,4 +290,9 @@ body{
     .humedad, .salinidad, .temperatura, .luminosidad{width: 100vw;}
 
     .section1 .foto img{width: 80vw;}
+
+    #botonCalculo{
+        zoom: 0.9;
+        width: 10rem;
+    }
 }

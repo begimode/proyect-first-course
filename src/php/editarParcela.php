@@ -18,16 +18,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     if(!$result){
         die("ERROR");
     }
-    // if (!mysqli_query($data, $result)) {
-    //     print_r(mysqli_error($data));
-    // }
+    
+    header("location:actualizar.php?id=".$idUsu);
 
-     header("location:actualizar.php?id=".$idUsu);
-
-    // mysqli_free_result($result);
-     mysqli_close($data);
-    // $result->close();
-   //  $mysqli->close();
+    mysqli_close($data);
 }
-
 ?>
